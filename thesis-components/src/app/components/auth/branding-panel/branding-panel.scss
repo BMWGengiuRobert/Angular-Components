@@ -1,0 +1,125 @@
+.branding-panel {
+    display: none; 
+    position: relative;
+    height: 100%;
+    width: 100%; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #0d1554 0%, #1a237e 35%, #1b5e70 70%, #00796b 100%);
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        display: flex;
+    }
+
+    .bg-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .dec-circle {
+        position: absolute;
+        border-radius: 50%;
+
+        &.c-1 {
+            width: 340px;
+            height: 340px;
+            top: -80px;
+            right: -100px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        &.c-2 {
+            width: 260px;
+            height: 260px;
+            bottom: -60px;
+            left: -80px;
+            background: rgba(0, 150, 136, 0.06);
+            border: 1px solid rgba(0, 150, 136, 0.05);
+        }
+
+        &.c-3 {
+            width: 140px;
+            height: 140px;
+            top: 30%;
+            left: 10%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+    }
+
+    .branding-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2rem;
+        max-width: 380px;
+        text-align: center;
+
+        .logo-container.glass {
+            width: 96px;
+            height: 96px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #fff;
+            font-weight: 700;
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .teal-line {
+            width: 48px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #4db6ac, #009688);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            font-size: 17px;
+            line-height: 26px;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 2rem;
+
+            span {
+                font-size: 12px;
+                padding: 6px 14px;
+                border-radius: 100px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.04);
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+    }
+
+    .attribution {
+        position: absolute;
+        bottom: 24px;
+        font-weight: 300;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+}

@@ -1,0 +1,69 @@
+<div class="auth-layout">
+    <div class="left-wrapper">
+        <app-branding-panel></app-branding-panel>
+    </div>
+    <div class="form-panel">
+        <div class="form-container">
+
+            <div class="mobile-branding">
+                <div class="mobile-logo">
+                    <img src="assets/svg/auth/logo-white.svg" alt="Logo">
+                </div>
+                <h2>CivicSense</h2>
+            </div>
+
+            <div class="header-text">
+                <h2>Sign in</h2>
+                <p>Welcome back. Log in to your civic portal.</p>
+            </div>
+
+            <form class="login-form" (ngSubmit)="handleSignIn()">
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email Address</mat-label>
+                    <mat-icon matPrefix class="icon-color">mail_outline</mat-icon>
+                    <input matInput type="email" [(ngModel)]="email" name="email" required>
+                </mat-form-field>
+
+                <div class="password-container">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Password</mat-label>
+                        <mat-icon matPrefix class="icon-color">lock_outline</mat-icon>
+                        <input matInput [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password"
+                            name="password" required>
+                        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                            <mat-icon class="icon-color">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </div>
+
+                <button mat-flat-button color="primary" class="sign-in-btn" type="submit" [disabled]="isLoading">
+                    <mat-spinner *ngIf="isLoading" diameter="20" class="spinner"></mat-spinner>
+                    <span *ngIf="!isLoading">SIGN IN</span>
+                </button>
+
+            </form>
+
+            <div class="divider-container">
+                <mat-divider class="mat-line"></mat-divider>
+                <span class="divider-text">OR</span>
+                <mat-divider class="mat-line"></mat-divider>
+            </div>
+
+            <button mat-stroked-button class="google-btn" type="button" (click)="loginWithGoogle()">
+                <img src="assets/svg/auth/google-logo.svg" alt="Google Logo" class="google-logo">
+                CONTINUE WITH GOOGLE
+            </button>
+
+            <div class="footer">
+                <span>Don't have an account?</span>
+                <a href="#">Sign Up</a>
+            </div>
+
+        </div>
+    </div>
+</div>
