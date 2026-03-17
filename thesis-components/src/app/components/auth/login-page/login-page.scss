@@ -199,10 +199,10 @@ $text-medium: rgba(0, 0, 0, 0.6);
     }
 
     .mat-mdc-text-field-wrapper.mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline__item {
-        border-color: $primary-color !important;
+        border-color: $primary-color;
     }
 
     .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
-        color: $primary-color !important;
+        color: $primary-color;
     }
 }

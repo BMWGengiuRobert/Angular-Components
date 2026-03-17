@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -20,7 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatProgressSpinnerModule,
     MatDividerModule,
-    BrandingPanel],
+    BrandingPanel,
+    RouterLink],
   templateUrl: './login-page.html',
   styleUrl: './login-page.scss',
 })

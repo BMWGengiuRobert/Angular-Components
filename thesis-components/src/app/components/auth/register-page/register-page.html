@@ -1,0 +1,124 @@
+<div class="auth-layout">
+    <div class="left-wrapper">
+        <app-branding-panel></app-branding-panel>
+    </div>
+
+    <div class="form-panel">
+        <div class="form-container">
+            <div class="mobile-branding">
+                <div class="mobile-logo">
+                    <img src="assets/svg/auth/logo-white.svg" alt="Logo">
+                </div>
+                <h2>CivicSense</h2>
+            </div>
+
+            <div class="header-text">
+                <h2>Create account</h2>
+                <p>Connect with your city in just a few steps.</p>
+            </div>
+
+            <mat-stepper [linear]="true" #stepper class="custom-stepper">
+                <ng-template matStepperIcon="edit">
+                    <mat-icon>done</mat-icon>
+                </ng-template>
+                <mat-step [stepControl]="personalFormGroup">
+                    <ng-template matStepLabel>Personal</ng-template>
+                    <form [formGroup]="personalFormGroup" class="step-form">
+                        <h3>Tell us a bit about yourself.</h3>
+                        <div class="form-row">
+                            <mat-form-field appearance="outline"><mat-label>First Name</mat-label><input matInput
+                                    formControlName="firstName" required></mat-form-field>
+                            <mat-form-field appearance="outline"><mat-label>Last Name</mat-label><input matInput
+                                    formControlName="lastName" required></mat-form-field>
+                        </div>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Phone Number</mat-label><input matInput formControlName="phone" required>
+                        </mat-form-field>
+                        <div class="action-buttons right">
+                            <button mat-flat-button color="primary" matStepperNext type="button">CONTINUE</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="addressFormGroup">
+                    <ng-template matStepLabel>Address</ng-template>
+                    <form [formGroup]="addressFormGroup" class="step-form">
+                        <h3>Where are you located in the city?</h3>
+                        <div class="form-row">
+                            <mat-form-field appearance="outline" style="flex: 2;"><mat-label>Street</mat-label><input
+                                    matInput formControlName="street" required></mat-form-field>
+                            <mat-form-field appearance="outline" style="flex: 1;"><mat-label>Number</mat-label><input
+                                    matInput formControlName="number" required></mat-form-field>
+                        </div>
+                        <mat-form-field appearance="outline" class="full-width"><mat-label>City</mat-label><input
+                                matInput formControlName="city" required></mat-form-field>
+                        <div class="form-row">
+                            <mat-form-field appearance="outline" style="flex: 2;"><mat-label>State</mat-label><input
+                                    matInput formControlName="state" required></mat-form-field>
+                            <mat-form-field appearance="outline" style="flex: 1;"><mat-label>Zip</mat-label><input
+                                    matInput formControlName="zip" required></mat-form-field>
+                        </div>
+                        <div class="action-buttons space-between">
+                            <button mat-button matStepperPrevious type="button" class="back-btn">BACK</button>
+                            <button mat-flat-button color="primary" matStepperNext type="button">CONTINUE</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="accountFormGroup">
+                    <ng-template matStepLabel>Account</ng-template>
+                    <form [formGroup]="accountFormGroup" class="step-form" (ngSubmit)="handleRegister()">
+                        <h3>Set up your login credentials.</h3>
+                        <mat-form-field appearance="outline" class="full-width"><mat-label>Email
+                                Address</mat-label><input matInput formControlName="email" type="email"
+                                required></mat-form-field>
+
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
+                                required>
+                            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+                                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
+                                formControlName="confirmPassword" required>
+                            <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
+                                type="button">
+                                <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error
+                                *ngIf="accountFormGroup.controls['confirmPassword'].hasError('mismatch')">Passwords do
+                                not match</mat-error>
+                        </mat-form-field>
+
+                        <div class="action-buttons space-between">
+                            <button mat-button matStepperPrevious type="button" class="back-btn">BACK</button>
+                            <button mat-flat-button color="primary" type="submit"
+                                [disabled]="isLoading || !accountFormGroup.valid">
+                                <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+                                <span *ngIf="!isLoading">CREATE ACCOUNT</span>
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-stepper>
+
+            <div class="footer">
+                <div class="terms-text" *ngIf="stepper.selectedIndex === 2">
+                    By creating an account, you agree to CivicSense's
+                    <a href="#">Terms of Service</a> and
+                    <a href="#">Privacy Policy</a>.
+                </div>
+
+                <div class="login-link">
+                    <span>Already have an account?</span>
+                    <a routerLink="/login">Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
